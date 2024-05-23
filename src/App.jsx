@@ -16,7 +16,7 @@ export default function App() {
     async function fetchProducts() {
       try {
         setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/products`);
+        const res = await fetch('https://fakestoreapi.com/products?limit=4');
         const data = await res.json();
         setProducts(data);
       } catch {
