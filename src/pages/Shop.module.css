@@ -9,36 +9,3 @@
   margin-top: 5rem;
   font-size: 3.5rem;
 }
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  column-gap: 4rem;
-  row-gap: 3rem;
-  margin-top: 4rem;
-}
-
-.card {
-  padding: 1rem;
-  background-color: var(--color-light--2);
-  color: var(--color-dark--1);
-}
-
-.productImage {
-  width: 100%;
-}
-
-.productDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.productTitle {
-  font-size: 1.8rem;
-}
-
-.productPrice {
-  font-weight: 500;
-  font-size: 1.4rem;
-}

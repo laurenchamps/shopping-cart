@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "productName": "Backpack",
+      "description": "This is a sturdy and rugged backpack perfect for day hikes or short multi-day hikes.",
+      "price": 200.0
+    },
+    {
+      "productName": "Hiking poles",
+      "description": "These trail trekking poles won't let you down. Featuring a lightweight yet durable aluminium shaft which is easy to adjust thanks to the FlickLock mechanism.",
+      "price": 150.0
+    },
+    {
+      "productName": "Trail runners",
+      "description": "These lightweight and low-profile trail running shoes are your next pair of hiking shoes. Leave the heavy boots at home and experience the difference.",
+      "price": 249.0
+    }
+  ]
+}
