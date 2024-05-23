@@ -3,11 +3,11 @@ import styles from './ProductList.module.css';
 
 function ProductList({ products }) {
   return (
-    <ul className={styles.products}>
+    <div className={styles.products}>
       {products.map((product) => (
         <Product product={product} key={product.id} />
       ))}
-    </ul>
+    </div>
   );
 }
 

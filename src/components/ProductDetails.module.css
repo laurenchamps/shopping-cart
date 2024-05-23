@@ -1,7 +1,18 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .productDetails {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.4rem;
+}
+
+.productDescription {
+  font-size: 1.3rem;
 }
 
 .productTitle {
@@ -9,6 +20,36 @@
 }
 
 .productPrice {
-  font-weight: 500;
-  font-size: 1.4rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.addContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quantityContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.quantityContainer input {
+  width: 4rem;
+  height: 3rem;
+}
+
+.quantityBtn {
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+}
+
+.addBtn {
+  align-self: start;
 }

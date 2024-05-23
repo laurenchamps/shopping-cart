@@ -31,7 +31,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route index element={<Homepage />} />
         <Route path="about" element={<About />} />
         <Route path="shop" element={<Shop products={products} />} />
         <Route path="cart" element={<Cart />} />
