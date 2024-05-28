@@ -1,7 +1,19 @@
 import styles from './ProductDetails.module.css';
+import { useState } from 'react';
 
 export default function ProductDetails({ product }) {
-  const { title, description, price } = product;
+  const { id, title, description, price } = product;
+  const [quantity, setQuantity] = useState(1);
+
+  //   const [cart, setCart] = useState([]);
+
+  function handleAdd(e) {
+    e.preventDefault();
+
+    const newProduct = { title, quantity, price, id };
+    console.log(newProduct);
+  }
+
   return (
     <div className={styles.content}>
       <div className={styles.productDetails}>
@@ -9,16 +21,37 @@ export default function ProductDetails({ product }) {
         <p className={styles.productDescription}>{description}</p>
         <p className={styles.productPrice}>${price.toFixed(2)}</p>
       </div>
-      <div className={styles.addContainer}>
+      <form className={styles.addContainer} onSubmit={handleAdd}>
         <div className={styles.quantityContainer}>
-          <button className={styles.quantityBtn}>-</button>
-          <input type="text"></input>
-          <button className={styles.quantityBtn}>+</button>
+          <button
+            className={styles.quantityBtn}
+            type="button"
+            onClick={() => setQuantity((q) => q - 1)}
+          >
+            -
+          </button>
+          <select
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+          >
+            {Array.from({ length: 100 }, (_, i) => i + 1).map((num) => (
+              <option value={num} key={num}>
+                {num}
+              </option>
+            ))}
+          </select>
+          <button
+            className={styles.quantityBtn}
+            type="button"
+            onClick={() => setQuantity((q) => q + 1)}
+          >
+            +
+          </button>
         </div>
-        <a href="#" className={`${styles.addBtn} cta`}>
+        <button type="submit" className={styles.addBtn}>
           Add to cart
-        </a>
-      </div>
+        </button>
+      </form>
     </div>
   );
 }

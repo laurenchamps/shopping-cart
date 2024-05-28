@@ -6,7 +6,7 @@ import Homepage from './pages/Homepage';
 import PageNotFound from './pages/PageNotFound';
 import { useEffect, useState } from 'react';
 
-const BASE_URL = 'http://localhost:9000';
+// const BASE_URL = 'http://localhost:9000';
 
 export default function App() {
   const [products, setProducts] = useState([]);
