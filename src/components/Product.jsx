@@ -1,7 +1,7 @@
 import styles from './Product.module.css';
 import ProductDetails from './ProductDetails';
 
-export default function Product({ product, onAddProducts }) {
+export default function Product({ product, children }) {
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -11,7 +11,7 @@ export default function Product({ product, onAddProducts }) {
           className={styles.productImage}
         ></img>
       </div>
-      <ProductDetails product={product} onAddProducts={onAddProducts} />
+      {children}
     </article>
   );
 }
