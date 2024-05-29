@@ -1,17 +1,27 @@
 import styles from './ProductDetails.module.css';
 import { useState } from 'react';
 
-export default function ProductDetails({ product }) {
+export default function ProductDetails({ product, onAddProducts }) {
   const { id, title, description, price } = product;
   const [quantity, setQuantity] = useState(1);
 
-  //   const [cart, setCart] = useState([]);
-
-  function handleAdd(e) {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    const newProduct = { title, quantity, price, id };
+    const newProduct = { id, title, quantity, price };
     console.log(newProduct);
+    onAddProducts(newProduct);
+
+    alert(`${quantity} ${title} added to cart`);
+    setQuantity(1);
+  }
+
+  function decreaseQty() {
+    if (quantity > 1) setQuantity((q) => q - 1);
+  }
+
+  function increaseQty() {
+    setQuantity((q) => q + 1);
   }
 
   return (
@@ -21,12 +31,12 @@ export default function ProductDetails({ product }) {
         <p className={styles.productDescription}>{description}</p>
         <p className={styles.productPrice}>${price.toFixed(2)}</p>
       </div>
-      <form className={styles.addContainer} onSubmit={handleAdd}>
+      <form className={styles.addContainer} onSubmit={handleSubmit}>
         <div className={styles.quantityContainer}>
           <button
             className={styles.quantityBtn}
             type="button"
-            onClick={() => setQuantity((q) => q - 1)}
+            onClick={decreaseQty}
           >
             -
           </button>
@@ -43,7 +53,7 @@ export default function ProductDetails({ product }) {
           <button
             className={styles.quantityBtn}
             type="button"
-            onClick={() => setQuantity((q) => q + 1)}
+            onClick={increaseQty}
           >
             +
           </button>

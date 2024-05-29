@@ -12,6 +12,12 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [cart, setCart] = useState([]);
+
+  function handleAddProducts(product) {
+    setCart((cart) => [...cart, product]);
+  }
+
   useEffect(function () {
     async function fetchProducts() {
       try {
@@ -33,7 +39,12 @@ export default function App() {
       <Routes>
         <Route index element={<Homepage />} />
         <Route path="about" element={<About />} />
-        <Route path="shop" element={<Shop products={products} />} />
+        <Route
+          path="shop"
+          element={
+            <Shop products={products} onAddProducts={handleAddProducts} />
+          }
+        />
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
