@@ -4,8 +4,3 @@
   background-color: var(--color-dark--1);
   min-height: calc(100vh - 5rem);
 }
-
-.content h2 {
-  margin-top: 5rem;
-  font-size: 3.5rem;
-}

@@ -45,7 +45,10 @@ export default function App() {
             <Shop products={products} onAddProducts={handleAddProducts} />
           }
         />
-        <Route path="cart" element={<Cart />} />
+        <Route
+          path="cart"
+          element={<Cart cart={cart} products={products} />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
