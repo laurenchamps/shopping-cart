@@ -8,7 +8,7 @@ export default function ProductDetails({ product, onAddProducts }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const newProduct = { id, title, quantity, price };
+    const newProduct = { id, quantity };
     console.log(newProduct);
     onAddProducts(newProduct);
 

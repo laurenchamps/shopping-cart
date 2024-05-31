@@ -13,9 +13,22 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [cart, setCart] = useState([]);
+  console.log(cart);
 
   function handleAddProducts(product) {
-    setCart((cart) => [...cart, product]);
+    setCart((curItems) => {
+      if (curItems.find((item) => item.id === product.id) == null) {
+        return [...curItems, product];
+      } else {
+        return curItems.map((item) => {
+          if (item.id === product.id) {
+            return { ...item, quantity: item.quantity + product.quantity };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
   }
 
   useEffect(function () {
@@ -45,10 +58,7 @@ export default function App() {
             <Shop products={products} onAddProducts={handleAddProducts} />
           }
         />
-        <Route
-          path="cart"
-          element={<Cart cart={cart} products={products} />}
-        />
+        <Route path="cart" element={<Cart cart={cart} products={products} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
