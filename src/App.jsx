@@ -13,7 +13,6 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [cart, setCart] = useState([]);
-  console.log(cart);
 
   function handleAddProducts(product) {
     setCart((curItems) => {
