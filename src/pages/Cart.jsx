@@ -8,10 +8,17 @@ import styles from './Cart.module.css';
 
 const products = JSON.parse(localStorage.getItem('products'));
 
-function Item({ item }) {
+function Item({ item, updateCartQuantity }) {
   console.log(products);
   const curProduct = products.find((product) => product.id === item.id);
   console.log(curProduct);
+
+  function handleQtyChange(e) {
+    if (isNaN(e.target.value)) return;
+
+    const updatedItem = { ...item, quantity: e.target.value };
+    updateCartQuantity(updatedItem);
+  }
 
   return (
     <div className={styles.item}>
@@ -32,6 +39,7 @@ function Item({ item }) {
           type="text"
           name="name"
           value={item.quantity}
+          onChange={handleQtyChange}
         />
         <button className={styles.quantityBtn} type="button" name="button">
           +
@@ -67,7 +75,7 @@ function CartTotal({ cart }) {
   );
 }
 
-export default function ShoppingCart({ cart }) {
+export default function ShoppingCart({ cart, updateCartQuantity }) {
   return (
     <main className={styles.cart}>
       <PageNav />
@@ -78,7 +86,13 @@ export default function ShoppingCart({ cart }) {
             <div className={styles.shoppingCart}>
               <ul>
                 {cart.map((item) => {
-                  return <Item item={item} key={item.id}></Item>;
+                  return (
+                    <Item
+                      item={item}
+                      key={item.id}
+                      updateCartQuantity={updateCartQuantity}
+                    ></Item>
+                  );
                 })}
               </ul>
             </div>

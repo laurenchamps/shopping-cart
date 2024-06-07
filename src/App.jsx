@@ -31,6 +31,16 @@ export default function App() {
     });
   }
 
+  function updateCartQuantity(updatedItem) {
+    setCart((curItems) => {
+      return curItems.map((item) => {
+        if (item.id === updatedItem.id) {
+          return updatedItem;
+        } else return item;
+      });
+    });
+  }
+
   useEffect(function () {
     const controller = new AbortController();
 
@@ -74,7 +84,16 @@ export default function App() {
             <Shop products={products} onAddProducts={handleAddProducts} />
           }
         />
-        <Route path="cart" element={<Cart cart={cart} products={products} />} />
+        <Route
+          path="cart"
+          element={
+            <Cart
+              cart={cart}
+              products={products}
+              updateCartQuantity={updateCartQuantity}
+            />
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
