@@ -31,19 +31,28 @@ export default function App() {
   }
 
   useEffect(function () {
+    const controller = new AbortController();
+
     async function fetchProducts() {
       try {
         setIsLoading(true);
-        const res = await fetch('https://fakestoreapi.com/products?limit=4');
+        const res = await fetch('https://fakestoreapi.com/products?limit=4', {
+          signal: controller.signal,
+        });
         const data = await res.json();
         setProducts(data);
       } catch {
-        alert('There was an error loading data');
+        alert('There was an error loading the data');
       } finally {
         setIsLoading(false);
       }
     }
     fetchProducts();
+
+    return function () {
+      controller.abort();
+      console.log('Clean up');
+    };
   }, []);
 
   return (
