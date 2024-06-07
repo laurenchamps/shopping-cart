@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 export default function App() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const [cart, setCart] = useState([]);
 
@@ -36,13 +37,20 @@ export default function App() {
     async function fetchProducts() {
       try {
         setIsLoading(true);
+        setError('');
+
         const res = await fetch('https://fakestoreapi.com/products?limit=4', {
           signal: controller.signal,
         });
+
+        if (!res.ok)
+          throw new Error('Something went wrong with fetching products');
+
         const data = await res.json();
         setProducts(data);
-      } catch {
-        alert('There was an error loading the data');
+        setError('');
+      } catch (err) {
+        setError(err.message);
       } finally {
         setIsLoading(false);
       }
