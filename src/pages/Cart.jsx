@@ -8,16 +8,14 @@ import styles from './Cart.module.css';
 
 const products = JSON.parse(localStorage.getItem('products'));
 
-function Item({ item, updateCartQuantity }) {
-  console.log(products);
+function Item({ item, updateCartQty, incrementQty, decrementQty, getCartQty }) {
   const curProduct = products.find((product) => product.id === item.id);
-  console.log(curProduct);
 
   function handleQtyChange(e) {
     if (isNaN(e.target.value)) return;
 
     const updatedItem = { ...item, quantity: e.target.value };
-    updateCartQuantity(updatedItem);
+    updateCartQty(updatedItem);
   }
 
   return (
@@ -31,7 +29,19 @@ function Item({ item, updateCartQuantity }) {
       </div>
 
       <div className={styles.quantityContainer}>
-        <button className={styles.quantityBtn} type="button" name="button">
+        <button
+          type="button"
+          name="button"
+          onClick={() => getCartQty(curProduct.id)}
+        >
+          Get Qty
+        </button>
+        <button
+          className={styles.quantityBtn}
+          type="button"
+          name="button"
+          onClick={() => decrementQty(curProduct.id)}
+        >
           -
         </button>
         <input
@@ -41,7 +51,12 @@ function Item({ item, updateCartQuantity }) {
           value={item.quantity}
           onChange={handleQtyChange}
         />
-        <button className={styles.quantityBtn} type="button" name="button">
+        <button
+          className={styles.quantityBtn}
+          type="button"
+          name="button"
+          onClick={() => incrementQty(curProduct.id)}
+        >
           +
         </button>
       </div>
@@ -75,7 +90,13 @@ function CartTotal({ cart }) {
   );
 }
 
-export default function ShoppingCart({ cart, updateCartQuantity }) {
+export default function ShoppingCart({
+  cart,
+  updateCartQty,
+  incrementQty,
+  decrementQty,
+  getCartQty,
+}) {
   return (
     <main className={styles.cart}>
       <PageNav />
@@ -90,7 +111,10 @@ export default function ShoppingCart({ cart, updateCartQuantity }) {
                     <Item
                       item={item}
                       key={item.id}
-                      updateCartQuantity={updateCartQuantity}
+                      updateCartQty={updateCartQty}
+                      incrementQty={incrementQty}
+                      decrementQty={decrementQty}
+                      getCartQty={getCartQty}
                     ></Item>
                   );
                 })}

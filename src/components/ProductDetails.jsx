@@ -12,7 +12,6 @@ export default function ProductDetails({ product, onAddProducts }) {
     console.log(newProduct);
     onAddProducts(newProduct);
 
-    alert(`${quantity} ${title} added to cart`);
     setQuantity(1);
   }
 

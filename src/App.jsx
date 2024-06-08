@@ -31,7 +31,7 @@ export default function App() {
     });
   }
 
-  function updateCartQuantity(updatedItem) {
+  function updateCartQty(updatedItem) {
     setCart((curItems) => {
       return curItems.map((item) => {
         if (item.id === updatedItem.id) {
@@ -39,6 +39,39 @@ export default function App() {
         } else return item;
       });
     });
+  }
+
+  function incrementQty(productId) {
+    setCart((curItems) => {
+      return curItems.map((item) => {
+        if (item.id === productId) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else return item;
+      });
+    });
+  }
+
+  function getCartQty(productId) {
+    return cart.find((item) => item.id === productId).quantity;
+  }
+
+  function decrementQty(productId) {
+    // If current product has only 1 item remaining, remove from cart
+    if (getCartQty(productId) === 1) {
+      console.log(productId);
+      setCart((curItems) => {
+        return curItems.filter((item) => item.id !== productId);
+      });
+    } else {
+      // Otherwise decrement quantity
+      setCart((curItems) => {
+        return curItems.map((item) => {
+          if (item.id === productId) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else return item;
+        });
+      });
+    }
   }
 
   useEffect(function () {
@@ -90,7 +123,10 @@ export default function App() {
             <Cart
               cart={cart}
               products={products}
-              updateCartQuantity={updateCartQuantity}
+              updateCartQty={updateCartQty}
+              incrementQty={incrementQty}
+              decrementQty={decrementQty}
+              getCartQty={getCartQty}
             />
           }
         />
