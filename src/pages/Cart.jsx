@@ -8,7 +8,7 @@ import styles from './Cart.module.css';
 
 const products = JSON.parse(localStorage.getItem('products'));
 
-function Item({ item, updateCartQty, incrementQty, decrementQty, getCartQty }) {
+function Item({ item, updateCartQty, incrementQty, decrementQty, deleteItem }) {
   const curProduct = products.find((product) => product.id === item.id);
 
   function handleQtyChange(e) {
@@ -30,16 +30,9 @@ function Item({ item, updateCartQty, incrementQty, decrementQty, getCartQty }) {
 
       <div className={styles.quantityContainer}>
         <button
-          type="button"
-          name="button"
-          onClick={() => getCartQty(curProduct.id)}
-        >
-          Get Qty
-        </button>
-        <button
           className={styles.quantityBtn}
           type="button"
-          name="button"
+          name="decrease"
           onClick={() => decrementQty(curProduct.id)}
         >
           -
@@ -47,14 +40,14 @@ function Item({ item, updateCartQty, incrementQty, decrementQty, getCartQty }) {
         <input
           className={styles.quantityInput}
           type="text"
-          name="name"
+          name="quantity"
           value={item.quantity}
           onChange={handleQtyChange}
         />
         <button
           className={styles.quantityBtn}
           type="button"
-          name="button"
+          name="increase"
           onClick={() => incrementQty(curProduct.id)}
         >
           +
@@ -65,7 +58,14 @@ function Item({ item, updateCartQty, incrementQty, decrementQty, getCartQty }) {
         ${(curProduct.price * item.quantity).toFixed(2)}
       </div>
 
-      <span className={styles.deleteBtn}>&times;</span>
+      <button
+        className={styles.deleteBtn}
+        type="button"
+        name="delete"
+        onClick={() => deleteItem(curProduct.id)}
+      >
+        <span className={styles.cross}>&times;</span>
+      </button>
     </div>
   );
 }
@@ -95,7 +95,7 @@ export default function ShoppingCart({
   updateCartQty,
   incrementQty,
   decrementQty,
-  getCartQty,
+  deleteItem,
 }) {
   return (
     <main className={styles.cart}>
@@ -114,7 +114,7 @@ export default function ShoppingCart({
                       updateCartQty={updateCartQty}
                       incrementQty={incrementQty}
                       decrementQty={decrementQty}
-                      getCartQty={getCartQty}
+                      deleteItem={deleteItem}
                     ></Item>
                   );
                 })}

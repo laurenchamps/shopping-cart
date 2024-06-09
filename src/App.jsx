@@ -74,6 +74,10 @@ export default function App() {
     }
   }
 
+  function deleteItem(productId) {
+    setCart((curItems) => curItems.filter((item) => item.id !== productId));
+  }
+
   useEffect(function () {
     const controller = new AbortController();
 
@@ -126,7 +130,7 @@ export default function App() {
               updateCartQty={updateCartQty}
               incrementQty={incrementQty}
               decrementQty={decrementQty}
-              getCartQty={getCartQty}
+              deleteItem={deleteItem}
             />
           }
         />
