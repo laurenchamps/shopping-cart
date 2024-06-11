@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import styles from './PageNav.module.css';
 
-export default function PageNav() {
+export default function PageNav({ totalItems }) {
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -15,7 +15,7 @@ export default function PageNav() {
         </li>
         <li>
           <NavLink to="/cart" className={styles.ctaLink}>
-            Cart
+            Cart {totalItems}
           </NavLink>
         </li>
       </ul>

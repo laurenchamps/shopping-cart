@@ -8,14 +8,14 @@ import styles from './Cart.module.css';
 
 const products = JSON.parse(localStorage.getItem('products'));
 
-function Item({ item, updateCartQty, incrementQty, decrementQty, deleteItem }) {
+function Item({ item, updateItemQty, incrementQty, decrementQty, deleteItem }) {
   const curProduct = products.find((product) => product.id === item.id);
 
   function handleQtyChange(e) {
     if (isNaN(e.target.value)) return;
 
     const updatedItem = { ...item, quantity: e.target.value };
-    updateCartQty(updatedItem);
+    updateItemQty(updatedItem);
   }
 
   return (
@@ -92,7 +92,7 @@ function CartTotal({ cart }) {
 
 export default function ShoppingCart({
   cart,
-  updateCartQty,
+  updateItemQty,
   incrementQty,
   decrementQty,
   deleteItem,
@@ -111,7 +111,7 @@ export default function ShoppingCart({
                     <Item
                       item={item}
                       key={item.id}
-                      updateCartQty={updateCartQty}
+                      updateItemQty={updateItemQty}
                       incrementQty={incrementQty}
                       decrementQty={decrementQty}
                       deleteItem={deleteItem}

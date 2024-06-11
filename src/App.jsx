@@ -15,6 +15,9 @@ export default function App() {
 
   const [cart, setCart] = useState([]);
 
+  const totalItems = getCartQty();
+  console.log(totalItems);
+
   function handleAddProducts(product) {
     setCart((curItems) => {
       if (curItems.find((item) => item.id === product.id) == null) {
@@ -31,7 +34,7 @@ export default function App() {
     });
   }
 
-  function updateCartQty(updatedItem) {
+  function updateItemQty(updatedItem) {
     setCart((curItems) => {
       return curItems.map((item) => {
         if (item.id === updatedItem.id) {
@@ -51,13 +54,13 @@ export default function App() {
     });
   }
 
-  function getCartQty(productId) {
+  function getItemQty(productId) {
     return cart.find((item) => item.id === productId).quantity;
   }
 
   function decrementQty(productId) {
     // If current product has only 1 item remaining, remove from cart
-    if (getCartQty(productId) === 1) {
+    if (getItemQty(productId) === 1) {
       console.log(productId);
       setCart((curItems) => {
         return curItems.filter((item) => item.id !== productId);
@@ -72,6 +75,12 @@ export default function App() {
         });
       });
     }
+  }
+
+  function getCartQty() {
+    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    console.log(total);
+    return total;
   }
 
   function deleteItem(productId) {
@@ -113,7 +122,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Homepage />} />
+        <Route index element={<Homepage totalItems={totalItems} />} />
         <Route path="about" element={<About />} />
         <Route
           path="shop"
@@ -127,7 +136,7 @@ export default function App() {
             <Cart
               cart={cart}
               products={products}
-              updateCartQty={updateCartQty}
+              updateItemQty={updateItemQty}
               incrementQty={incrementQty}
               decrementQty={decrementQty}
               deleteItem={deleteItem}
