@@ -14,8 +14,13 @@ export default function PageNav({ totalItems }) {
           <NavLink to="/shop">Shop</NavLink>
         </li>
         <li>
-          <NavLink to="/cart" className={styles.ctaLink}>
-            Cart {totalItems}
+          <NavLink to="/cart">
+            <div className={styles.cartIcon}>
+              <ion-icon name="cart-outline" size="large"></ion-icon>
+              {totalItems > 0 && (
+                <span className={styles.cartTally}>{totalItems}</span>
+              )}
+            </div>
           </NavLink>
         </li>
       </ul>

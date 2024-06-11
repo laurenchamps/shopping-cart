@@ -30,3 +30,12 @@ a.ctaLink:visited {
   padding: 0.8rem 2rem;
   border-radius: 7px;
 }
+
+.cartIcon {
+  display: flex;
+}
+
+.cartTally {
+  /* transform: translate(-5px); */
+  translate: 2px -8px;
+}
