@@ -11,42 +11,6 @@
   /* height: 200px; */
 }
 
-.item {
-  display: grid;
-  grid-template-columns: max-content 3fr max-content 1fr max-content;
-  column-gap: 1rem;
-  align-items: center;
-  padding: 1rem;
-}
-
-.image img {
-  width: 100px;
-}
-
-.quantityContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.quantityContainer input {
-  width: 4rem;
-  height: 3rem;
-}
-
-.quantityBtn {
-  background-color: var(--color-dark--1);
-  color: var(--color-light--2);
-  border-radius: 2px;
-  width: 20px;
-  height: 20px;
-}
-
-.price {
-  text-align: end;
-  font-weight: 600;
-}
-
 .cartTotal {
   padding: 1rem;
   background-color: var(--color-light--2);
@@ -62,25 +26,4 @@
 
 .total {
   text-transform: uppercase;
-}
-
-.deleteBtn {
-  height: 20px;
-  width: 20px;
-  padding: 0.6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.2rem;
-  color: #000;
-  background-color: darkgrey;
-  border: 0.1rem solid darkgrey;
-  border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
-}
-
-.cross {
-  display: block;
-  translate: 0 0.1rem;
 }

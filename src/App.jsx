@@ -4,9 +4,9 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import Homepage from './pages/Homepage';
 import PageNotFound from './pages/PageNotFound';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
-// const BASE_URL = 'http://localhost:9000';
+const CartContext = createContext();
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -115,36 +115,32 @@ export default function App() {
 
     return function () {
       controller.abort();
-      console.log('Clean up');
     };
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Homepage totalItems={totalItems} />} />
-        <Route path="about" element={<About />} />
-        <Route
-          path="shop"
-          element={
-            <Shop products={products} onAddProducts={handleAddProducts} />
-          }
-        />
-        <Route
-          path="cart"
-          element={
-            <Cart
-              cart={cart}
-              products={products}
-              updateItemQty={updateItemQty}
-              incrementQty={incrementQty}
-              decrementQty={decrementQty}
-              deleteItem={deleteItem}
-            />
-          }
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <CartContext.Provider
+      value={{
+        cart,
+        totalItems: totalItems,
+        onAddProducts: handleAddProducts,
+        updateItemQty,
+        incrementQty,
+        decrementQty,
+        deleteItem,
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Homepage />} />
+          <Route path="about" element={<About />} />
+          <Route path="shop" element={<Shop products={products} />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </CartContext.Provider>
   );
 }
+
+export { CartContext };

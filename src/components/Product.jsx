@@ -1,5 +1,4 @@
 import styles from './Product.module.css';
-import ProductDetails from './ProductDetails';
 
 export default function Product({ product, children }) {
   return (

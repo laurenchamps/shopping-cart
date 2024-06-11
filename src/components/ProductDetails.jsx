@@ -1,7 +1,9 @@
+import { CartContext } from '../App';
 import styles from './ProductDetails.module.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
-export default function ProductDetails({ product, onAddProducts }) {
+export default function ProductDetails({ product }) {
+  const { onAddProducts } = useContext(CartContext);
   const { id, title, description, price } = product;
   const [quantity, setQuantity] = useState(1);
 
@@ -9,7 +11,6 @@ export default function ProductDetails({ product, onAddProducts }) {
     e.preventDefault();
 
     const newProduct = { id, quantity };
-    console.log(newProduct);
     onAddProducts(newProduct);
 
     setQuantity(1);
@@ -37,7 +38,7 @@ export default function ProductDetails({ product, onAddProducts }) {
             type="button"
             onClick={decreaseQty}
           >
-            -
+            &minus;
           </button>
           <select
             value={quantity}
@@ -54,7 +55,7 @@ export default function ProductDetails({ product, onAddProducts }) {
             type="button"
             onClick={increaseQty}
           >
-            +
+            &#43;
           </button>
         </div>
         <button type="submit" className={styles.addBtn}>

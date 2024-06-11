@@ -4,7 +4,7 @@ import Product from '../components/Product';
 import ProductDetails from '../components/ProductDetails';
 import styles from './Shop.module.css';
 
-export default function Shop({ products, onAddProducts }) {
+export default function Shop({ products }) {
   return (
     <main className={styles.shop}>
       <PageNav />
@@ -13,7 +13,7 @@ export default function Shop({ products, onAddProducts }) {
         <ProductList products={products}>
           {products.map((product) => (
             <Product product={product} key={product.id}>
-              <ProductDetails product={product} onAddProducts={onAddProducts} />
+              <ProductDetails product={product} />
             </Product>
           ))}
         </ProductList>

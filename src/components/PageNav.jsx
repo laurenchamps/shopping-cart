@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import styles from './PageNav.module.css';
+import { useContext } from 'react';
+import { CartContext } from '../App';
 
-export default function PageNav({ totalItems }) {
+export default function PageNav() {
+  const { totalItems } = useContext(CartContext);
+
   return (
     <nav className={styles.nav}>
       <Logo />
