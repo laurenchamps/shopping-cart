@@ -22,7 +22,7 @@ export default function CartItem({ item }) {
         <img src={curProduct.image} alt="" />
       </div>
 
-      <div>
+      <div className={styles.title}>
         <p>{curProduct.title}</p>
       </div>
 

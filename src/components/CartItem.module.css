@@ -56,3 +56,25 @@
   display: block;
   translate: 0 0.1rem;
 }
+
+@media screen and (max-width: 800px) {
+  .item {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr repeat(4, min-height);
+    justify-items: center;
+    column-gap: 0.5rem;
+  }
+
+  .title {
+    max-width: 70%;
+    text-align: center;
+  }
+
+  .deleteBtn {
+    grid-row-start: 1;
+    justify-self: end;
+  }
+  /* .image img {
+    width: 200px;
+  } */
+}
