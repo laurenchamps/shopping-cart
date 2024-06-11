@@ -10,7 +10,7 @@ export default function Logo() {
           alt="ExploreGear logo"
           className={styles.logo}
         />
-        {/* <p className={styles.brandName}>Adventure Gear</p> */}
+        <p className={styles.brandName}>Adventure Gear</p>
       </Link>
     </>
   );
