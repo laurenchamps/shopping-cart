@@ -9,7 +9,7 @@
 
 .imageContainer {
   background-color: #fff;
-  height: 400px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,5 +17,5 @@
 }
 
 .productImage {
-  width: 70%;
+  width: 60%;
 }

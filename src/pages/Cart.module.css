@@ -11,6 +11,10 @@
   /* height: 200px; */
 }
 
+.container {
+  max-width: 80%;
+}
+
 .cartTotal {
   padding: 1rem;
   background-color: var(--color-light--2);
@@ -18,10 +22,11 @@
   border-top: 1px solid var(--color-light--1);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
   justify-content: flex-end;
   align-items: end;
   font-weight: 600;
+  padding-top: 3rem;
 }
 
 .total {

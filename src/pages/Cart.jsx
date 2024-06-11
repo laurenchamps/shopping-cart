@@ -1,6 +1,6 @@
 import PageNav from '../components/PageNav';
 import styles from './Cart.module.css';
-import Item from '../components/Item';
+import CartItem from '../components/CartItem';
 import { useContext } from 'react';
 import { CartContext } from '../App';
 
@@ -19,14 +19,14 @@ export default function Cart() {
   return (
     <main className={styles.cart}>
       <PageNav />
-      <section>
+      <section className={styles.container}>
         <h2>Shopping Cart</h2>
         {cart.length > 0 && (
           <>
             <div className={styles.shoppingCart}>
               <ul>
                 {cart.map((item) => {
-                  return <Item item={item} key={item.id}></Item>;
+                  return <CartItem item={item} key={item.id}></CartItem>;
                 })}
               </ul>
             </div>

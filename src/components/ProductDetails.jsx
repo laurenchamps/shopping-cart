@@ -28,8 +28,8 @@ export default function ProductDetails({ product }) {
     <div className={styles.content}>
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{title}</h3>
-        <p className={styles.productDescription}>{description}</p>
         <p className={styles.productPrice}>${price.toFixed(2)}</p>
+        <p className={styles.productDescription}>{description}</p>
       </div>
       <form className={styles.addContainer} onSubmit={handleSubmit}>
         <div className={styles.quantityContainer}>
@@ -40,16 +40,12 @@ export default function ProductDetails({ product }) {
           >
             &minus;
           </button>
-          <select
+          <input
+            className={styles.numberInput}
+            type="number"
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
-          >
-            {Array.from({ length: 100 }, (_, i) => i + 1).map((num) => (
-              <option value={num} key={num}>
-                {num}
-              </option>
-            ))}
-          </select>
+          />
           <button
             className={styles.quantityBtn}
             type="button"

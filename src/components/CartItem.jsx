@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import styles from './Item.module.css';
+import styles from './CartItem.module.css';
 import { CartContext } from '../App';
 
 const products = JSON.parse(localStorage.getItem('products'));
 
-export default function Item({ item }) {
+export default function CartItem({ item }) {
   const curProduct = products.find((product) => product.id === item.id);
   const { updateItemQty, incrementQty, decrementQty, deleteItem } =
     useContext(CartContext);

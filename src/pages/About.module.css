@@ -4,3 +4,7 @@
   background-color: var(--color-dark--1);
   min-height: calc(100vh - 5rem);
 }
+
+.container {
+  max-width: 60ch;
+}

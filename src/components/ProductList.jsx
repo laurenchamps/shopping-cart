@@ -1,4 +1,3 @@
-import Product from './Product';
 import styles from './ProductList.module.css';
 
 function ProductList({ products, children }) {
