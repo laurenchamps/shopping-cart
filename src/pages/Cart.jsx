@@ -22,7 +22,7 @@ export default function Cart() {
       <PageNav />
       <section className={styles.container}>
         <h2>Shopping Cart</h2>
-        {cart.length > 0 && (
+        {cart.length > 0 ? (
           <>
             <div className={styles.shoppingCart}>
               <ul>
@@ -41,6 +41,8 @@ export default function Cart() {
               <button className="btn">CHECKOUT</button>
             </div>
           </>
+        ) : (
+          <p>Your shopping cart is empty</p>
         )}
       </section>
       <Footer />
