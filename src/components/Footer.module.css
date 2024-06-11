@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: auto;
+}
+
+.copyright {
+  font-size: 1.2rem;
+}
+
+.link:link,
+.link:visited {
+  color: var(--color-light--2);
+}

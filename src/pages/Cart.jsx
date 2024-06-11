@@ -1,4 +1,5 @@
 import PageNav from '../components/PageNav';
+import Footer from '../components/Footer';
 import styles from './Cart.module.css';
 import CartItem from '../components/CartItem';
 import { useContext } from 'react';
@@ -42,6 +43,7 @@ export default function Cart() {
           </>
         )}
       </section>
+      <Footer />
     </main>
   );
 }

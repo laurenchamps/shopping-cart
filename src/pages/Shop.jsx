@@ -1,4 +1,5 @@
 import PageNav from '../components/PageNav';
+import Footer from '../components/Footer';
 import ProductList from '../components/ProductList';
 import Product from '../components/Product';
 import ProductDetails from '../components/ProductDetails';
@@ -18,6 +19,7 @@ export default function Shop({ products }) {
           ))}
         </ProductList>
       </section>
+      <Footer />
     </main>
   );
 }

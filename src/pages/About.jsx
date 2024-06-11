@@ -1,4 +1,5 @@
 import PageNav from '../components/PageNav';
+import Footer from '../components/Footer';
 import styles from './About.module.css';
 
 export default function About() {
@@ -17,6 +18,7 @@ export default function About() {
           with everything you need.
         </p>
       </div>
+      <Footer />
     </main>
   );
 }
