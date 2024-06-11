@@ -16,7 +16,6 @@ export default function App() {
   const [cart, setCart] = useState([]);
 
   const totalItems = getCartQty();
-  console.log(totalItems);
 
   function handleAddProducts(product) {
     setCart((curItems) => {
@@ -78,9 +77,7 @@ export default function App() {
   }
 
   function getCartQty() {
-    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
-    console.log(total);
-    return total;
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
   }
 
   function deleteItem(productId) {
@@ -134,7 +131,12 @@ export default function App() {
         <Routes>
           <Route index element={<Homepage />} />
           <Route path="about" element={<About />} />
-          <Route path="shop" element={<Shop products={products} />} />
+          <Route
+            path="shop"
+            element={
+              <Shop products={products} isLoading={isLoading} error={error} />
+            }
+          />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
