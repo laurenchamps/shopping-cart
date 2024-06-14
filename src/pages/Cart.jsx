@@ -2,7 +2,7 @@ import PageNav from '../components/PageNav';
 import Footer from '../components/Footer';
 import styles from './Cart.module.css';
 import CartItem from '../components/CartItem';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { CartContext } from '../App';
 
 const products = JSON.parse(localStorage.getItem('products'));
@@ -15,7 +15,9 @@ export default function Cart() {
     return item.quantity * product.price;
   });
 
-  const totalPrice = prices.reduce((acc, cur) => acc + cur, 0);
+  const totalPrice = useMemo(() => {
+    return prices.reduce((total, price) => total + price, 0);
+  }, [prices]);
 
   return (
     <main className={styles.cart}>
