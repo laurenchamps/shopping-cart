@@ -1,11 +1,13 @@
 import { CartContext } from '../App';
 import styles from './ProductDetails.module.css';
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductDetails({ product }) {
   const { onAddProducts } = useContext(CartContext);
   const { id, title, description, price } = product;
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,6 +16,7 @@ export default function ProductDetails({ product }) {
     onAddProducts(newProduct);
 
     setQuantity(1);
+    navigate('/cart');
   }
 
   function decreaseQty() {
